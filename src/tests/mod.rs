@@ -1,4 +1,5 @@
 use crate::*;
+use dbg_hex::dbg_hex;
 const BUFFER_SIZE: usize = 512;
 
 fn get_buffer_with_length() -> ([u8; BUFFER_SIZE], usize) {
@@ -25,7 +26,8 @@ fn dump_tx() {
         &mut len as *mut usize as *mut u64,
         0,
     );
-    dbg!(&result, &v[..len], &len);
+    dbg!(&result, &len);
+    dbg_hex!(&v[..len]);
 }
 
 #[test]
@@ -36,7 +38,8 @@ fn dump_tx_hash() {
         &mut len as *mut usize as *mut u64,
         0,
     );
-    dbg!(&result, &v[..len], &len);
+    dbg!(&result, &len);
+    dbg_hex!(&v[..len]);
 }
 
 #[test]
@@ -47,7 +50,8 @@ fn dump_script_hash() {
         &mut len as *mut usize as *mut u64,
         0,
     );
-    dbg!(&result, &v[..len], &len);
+    dbg!(&result, &len);
+    dbg_hex!(&v[..len]);
 }
 
 #[test]
@@ -60,7 +64,8 @@ fn dump_witness() {
         0,
         SOURCE_INPUT,
     );
-    dbg!(&result, &v[..len], &len);
+    dbg!(&result, &len);
+    dbg_hex!(&v[..len]);
 }
 
 #[test]
@@ -74,5 +79,6 @@ fn dump_cell_by_field() {
         SOURCE_INPUT,
         CELL_FIELD_CAPACITY,
     );
-    dbg!(&result, &v[..len], &len);
+    dbg!(&result, &len);
+    dbg_hex!(&v[..len]);
 }
