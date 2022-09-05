@@ -1,8 +1,6 @@
 use crate::*;
 const BUFFER_SIZE: usize = 512;
 
-// CKB_TX_FILE="src/tests/tx_file.json" CKB_RUNNING_SETUP="src/tests/running_setup.json" cargo test tests::dump_script_hash -- --exact --nocapture
-
 fn get_buffer_with_length() -> ([u8; BUFFER_SIZE], usize) {
     ([0; BUFFER_SIZE], BUFFER_SIZE)
 }
