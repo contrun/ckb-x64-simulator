@@ -12,7 +12,7 @@ fn dump_witness() {
     dbg!(mock_tx.core_transaction());
     const SIZE: usize = 256;
     let mut v: [u8; SIZE] = [0; SIZE];
-    let mut len: u64 = 0;
+    let mut len: u64 = SIZE as u64;
     let result = ckb_load_witness(v.as_mut_ptr() as *mut c_void, &mut len as *mut u64, 0, 0, 1);
     dbg!(&result, &v, &len);
 }
