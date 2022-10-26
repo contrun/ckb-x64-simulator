@@ -81,6 +81,19 @@ fn dump_witness() {
 }
 
 #[test]
+fn dump_witness_1() {
+    let mut len: usize = 0;
+    let result = ckb_load_witness(
+        0 as *mut c_void,
+        &mut len as *mut usize as *mut u64,
+        10,
+        0,
+        SOURCE_INPUT,
+    );
+    dbg!(&result, &len);
+}
+
+#[test]
 fn dump_input_cell() {
     let (mut v, mut len) = get_buffer_with_length();
     let result = ckb_load_cell(
@@ -444,4 +457,19 @@ fn dump_header_by_field() {
             }
         }
     }
+}
+
+#[test]
+fn dump_cell_dep_cell_data_hash() {
+    let (mut v, mut len) = get_buffer_with_length();
+    let result = ckb_load_cell_by_field(
+        v.as_mut_ptr() as *mut c_void,
+        &mut len as *mut usize as *mut u64,
+        0,
+        0,
+        SOURCE_CELL_DEP,
+        CELL_FIELD_DATA_HASH,
+    );
+    dbg!(&result, &len);
+    dbg_hex!(&v[..len]);
 }
